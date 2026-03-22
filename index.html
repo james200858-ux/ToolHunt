@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ToolHunt — Find Your Perfect AI Tool</title>
+  <meta name="description" content="Discover the best AI tools for your workflow. Filter by role, category, and budget. Get instant AI-powered recommendations."/>
+  <meta name="keywords" content="best AI tools 2025, AI tool finder, AI tools for writers, AI tools for students, free AI tools, AI productivity tools"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #111113;
+      --surface2: #18181b;
+      --surface3: #1f1f23;
+      --border: #27272a;
+      --border2: #3f3f46;
+      --text: #fafafa;
+      --text2: #a1a1aa;
+      --text3: #71717a;
+      --accent: #6ee7b7;
+      --accent-dim: rgba(110,231,183,0.1);
+      --accent-glow: rgba(110,231,183,0.2);
+      --red: #f87171;
+      --yellow: #fbbf24;
+      --blue: #60a5fa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
+
+```
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 58px;
+  background: rgba(9,9,11,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.04em; }
+.logo span { color: var(--accent); }
+.nav-pill { font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 99px; background: var(--surface2); color: var(--text2); border: 1px solid var(--border); }
+.nav-pill b { color: var(--accent); }
+
+/* HERO */
+.hero { position: relative; padding: 68px 2rem 52px; text-align: center; overflow: hidden; }
+.hero-glow { position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 350px; background: radial-gradient(ellipse, rgba(110,231,183,0.07) 0%, transparent 70%); pointer-events: none; }
+.hero-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(110,231,183,0.2); border-radius: 99px; padding: 5px 14px; margin-bottom: 26px; }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 2s infinite; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 16px; }
+.grad { background: linear-gradient(135deg, var(--accent), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 0.98rem; color: var(--text2); line-height: 1.75; max-width: 480px; margin: 0 auto 36px; font-weight: 400; }
+
+/* SEARCH */
+.search-wrap { max-width: 540px; margin: 0 auto; position: relative; }
+.search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text3); pointer-events: none; }
+.search-input { width: 100%; padding: 13px 18px 13px 44px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; color: var(--text); font-family: inherit; font-size: 0.93rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+.search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+.search-input::placeholder { color: var(--text3); }
+
+/* STATS */
+.stats-bar { display: flex; justify-content: center; gap: 3rem; padding: 24px 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+.stat-num { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.04em; color: var(--text); }
+.stat-num b { color: var(--accent); }
+.stat-label { font-size: 0.68rem; color: var(--text3); font-weight: 600; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* LAYOUT */
+.main { display: grid; grid-template-columns: 230px 1fr; max-width: 1440px; margin: 0 auto; }
+
+/* SIDEBAR */
+.sidebar { padding: 1.4rem; border-right: 1px solid var(--border); position: sticky; top: 58px; height: calc(100vh - 58px); overflow-y: auto; }
+.sb-section { margin-bottom: 1.6rem; }
+.sb-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; padding-left: 2px; }
+.filter-list { display: flex; flex-direction: column; gap: 1px; }
+.filter-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 7px 10px; border-radius: 8px; border: none; background: transparent; color: var(--text2); font-family: inherit; font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.14s; text-align: left; }
+.filter-btn:hover { background: var(--surface2); color: var(--text); }
+.filter-btn.active { background: var(--accent-dim); color: var(--accent); font-weight: 600; }
+.filter-btn .cnt { font-size: 0.65rem; font-weight: 700; color: var(--text3); background: var(--surface3); padding: 1px 6px; border-radius: 99px; }
+.filter-btn.active .cnt { background: rgba(110,231,183,0.12); color: var(--accent); }
+.price-row { display: flex; gap: 5px; flex-wrap: wrap; }
+.price-chip { padding: 5px 11px; border-radius: 99px; border: 1px solid var(--border2); background: transparent; font-family: inherit; font-size: 0.73rem; font-weight: 600; color: var(--text2); cursor: pointer; transition: all 0.14s; }
+.price-chip:hover { border-color: var(--text2); color: var(--text); }
+.price-chip.active { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+.reset-btn { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--border); background: transparent; font-family: inherit; font-size: 0.76rem; font-weight: 600; color: var(--text3); cursor: pointer; transition: all 0.14s; margin-top: 4px; }
+.reset-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* CONTENT */
+.content { padding: 1.4rem; }
+.content-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.result-info { font-size: 0.8rem; color: var(--text3); }
+.result-info b { color: var(--text); font-weight: 700; }
+
+/* GRID */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(295px, 1fr)); gap: 10px; }
+
+/* CARD */
+.tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.15rem; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s; animation: fadeUp 0.35s ease both; }
+.tool-card:hover { border-color: var(--border2); box-shadow: 0 4px 28px rgba(0,0,0,0.45); transform: translateY(-2px); }
+.card-top { display: flex; align-items: center; gap: 11px; }
+.tool-avatar { width: 42px; height: 42px; border-radius: 11px; background: var(--surface3); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+.card-info { flex: 1; min-width: 0; }
+.tool-name { font-size: 0.92rem; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tool-cat { font-size: 0.65rem; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 1px; }
+.price-badge { font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 99px; flex-shrink: 0; }
+.price-badge.free { background: rgba(110,231,183,0.12); color: #6ee7b7; }
+.price-badge.freemium { background: rgba(251,191,36,0.12); color: #fbbf24; }
+.price-badge.paid { background: rgba(248,113,113,0.12); color: #f87171; }
+.tool-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.6; }
+.tool-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag { font-size: 0.62rem; font-weight: 600; padding: 2px 7px; border-radius: 5px; background: var(--surface3); color: var(--text3); letter-spacing: 0.04em; border: 1px solid var(--border); }
+.card-actions { display: flex; gap: 7px; margin-top: 2px; }
+.btn-ai { flex: 1; padding: 8px 10px; border-radius: 9px; border: 1px solid rgba(110,231,183,0.2); background: var(--accent-dim); color: var(--accent); font-family: inherit; font-size: 0.74rem; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+.btn-ai:hover { background: rgba(110,231,183,0.18); border-color: var(--accent); }
+.btn-visit { padding: 8px 13px; border-radius: 9px; border: 1px solid var(--border2); background: var(--surface2); color: var(--text2); font-family: inherit; font-size: 0.74rem; font-weight: 700; text-decoration: none; transition: all 0.15s; display: flex; align-items: center; }
+.btn-visit:hover { border-color: var(--text2); color: var(--text); }
+
+/* AI PANEL */
+.ai-panel { display: none; padding: 11px; background: var(--surface2); border-radius: 10px; border: 1px solid rgba(110,231,183,0.12); flex-direction: column; gap: 7px; }
+.ai-panel.show { display: flex; animation: fadeIn 0.22s ease; }
+.ai-panel-hd { display: flex; align-items: center; gap: 6px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.ai-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); animation: blink 1.5s infinite; }
+.ai-body { font-size: 0.8rem; color: var(--text2); line-height: 1.65; }
+.dots { display: inline-flex; gap: 3px; align-items: center; }
+.dots span { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); animation: bounce 1.1s infinite; }
+.dots span:nth-child(2) { animation-delay: 0.15s; }
+.dots span:nth-child(3) { animation-delay: 0.3s; }
+
+/* EMPTY */
+.empty { grid-column: 1/-1; text-align: center; padding: 5rem 2rem; color: var(--text3); }
+.empty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.empty h3 { font-size: 1rem; font-weight: 700; color: var(--text2); margin-bottom: 0.3rem; }
+.empty p { font-size: 0.82rem; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.75rem; color: var(--text3); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+@keyframes bounce { 0%,80%,100% { transform:translateY(0); opacity:0.4; } 40% { transform:translateY(-5px); opacity:1; } }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .main { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .filter-list { flex-direction: row; flex-wrap: wrap; gap: 5px; }
+  .filter-btn { width: auto; padding: 5px 11px; font-size: 0.76rem; }
+  .filter-btn .cnt { display: none; }
+  .stats-bar { gap: 1.5rem; flex-wrap: wrap; }
+  .hero { padding: 44px 1.2rem 32px; }
+  nav { padding: 0 1.2rem; }
+}
+@media (max-width: 480px) {
+  .tools-grid { grid-template-columns: 1fr; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Tool<span>Hunt</span></div>
+  <div class="nav-pill"><b id="matchCount">—</b> tools found</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><div class="live-dot"></div>Updated 2025</div>
+  <h1>Find your <span class="grad">perfect AI tool</span><br/>in seconds.</h1>
+  <p>Filter by your role, what you need, and your budget — then get an AI explanation of why each tool fits you perfectly.</p>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search 40+ AI tools..." oninput="renderTools()"/>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num"><b>43</b>+</div><div class="stat-label">Tools Listed</div></div>
+  <div class="stat"><div class="stat-num"><b>13</b></div><div class="stat-label">Categories</div></div>
+  <div class="stat"><div class="stat-num"><b>10</b></div><div class="stat-label">Roles</div></div>
+  <div class="stat"><div class="stat-num" style="color:var(--accent)">AI</div><div class="stat-label">Powered</div></div>
+</div>
+
+<div class="main">
+  <aside class="sidebar">
+
+```
+<div class="sb-section">
+  <div class="sb-label">Who are you?</div>
+  <div class="filter-list" id="roleFilter">
+    <button class="filter-btn active" data-val="all" onclick="setFilter('role','all',this)">👤 Everyone <span class="cnt" id="rc-all"></span></button>
+    <button class="filter-btn" data-val="writer" onclick="setFilter('role','writer',this)">✍️ Writer <span class="cnt" id="rc-writer"></span></button>
+    <button class="filter-btn" data-val="developer" onclick="setFilter('role','developer',this)">💻 Developer <span class="cnt" id="rc-developer"></span></button>
+    <button class="filter-btn" data-val="designer" onclick="setFilter('role','designer',this)">🎨 Designer <span class="cnt" id="rc-designer"></span></button>
+    <button class="filter-btn" data-val="student" onclick="setFilter('role','student',this)">🎓 Student <span class="cnt" id="rc-student"></span></button>
+    <button class="filter-btn" data-val="marketer" onclick="setFilter('role','marketer',this)">📣 Marketer <span class="cnt" id="rc-marketer"></span></button>
+    <button class="filter-btn" data-val="entrepreneur" onclick="setFilter('role','entrepreneur',this)">🚀 Entrepreneur <span class="cnt" id="rc-entrepreneur"></span></button>
+    <button class="filter-btn" data-val="researcher" onclick="setFilter('role','researcher',this)">🔬 Researcher <span class="cnt" id="rc-researcher"></span></button>
+    <button class="filter-btn" data-val="creator" onclick="setFilter('role','creator',this)">🎬 Creator <span class="cnt" id="rc-creator"></span></button>
+    <button class="filter-btn" data-val="hr" onclick="setFilter('role','hr',this)">🤝 HR / Manager <span class="cnt" id="rc-hr"></span></button>
+  </div>
+</div>
+
+<div class="sb-section">
+  <div class="sb-label">Category</div>
+  <div class="filter-list" id="categoryFilter">
+    <button class="filter-btn active" data-val="all" onclick="setFilter('category','all',this)">All <span class="cnt" id="cc-all"></span></button>
+    <button class="filter-btn" data-val="writing" onclick="setFilter('category','writing',this)">📝 Writing <span class="cnt" id="cc-writing"></span></button>
+    <button class="filter-btn" data-val="image" onclick="setFilter('category','image',this)">🖼️ Image Gen <span class="cnt" id="cc-image"></span></button>
+    <button class="filter-btn" data-val="coding" onclick="setFilter('category','coding',this)">💻 Coding <span class="cnt" id="cc-coding"></span></button>
+    <button class="filter-btn" data-val="video" onclick="setFilter('category','video',this)">🎬 Video <span class="cnt" id="cc-video"></span></button>
+    <button class="filter-btn" data-val="audio" onclick="setFilter('category','audio',this)">🎙️ Audio <span class="cnt" id="cc-audio"></span></button>
+    <button class="filter-btn" data-val="productivity" onclick="setFilter('category','productivity',this)">⚡ Productivity <span class="cnt" id="cc-productivity"></span></button>
+    <button class="filter-btn" data-val="research" onclick="setFilter('category','research',this)">🔍 Research <span class="cnt" id="cc-research"></span></button>
+    <button class="filter-btn" data-val="chatbot" onclick="setFilter('category','chatbot',this)">🤖 Chatbot <span class="cnt" id="cc-chatbot"></span></button>
+    <button class="filter-btn" data-val="data" onclick="setFilter('category','data',this)">📊 Data & Analytics <span class="cnt" id="cc-data"></span></button>
+    <button class="filter-btn" data-val="design" onclick="setFilter('category','design',this)">✨ Design <span class="cnt" id="cc-design"></span></button>
+    <button class="filter-btn" data-val="automation" onclick="setFilter('category','automation',this)">🔧 Automation <span class="cnt" id="cc-automation"></span></button>
+    <button class="filter-btn" data-val="education" onclick="setFilter('category','education',this)">📚 Education <span class="cnt" id="cc-education"></span></button>
+  </div>
+</div>
+
+<div class="sb-section">
+  <div class="sb-label">Pricing</div>
+  <div class="price-row">
+    <button class="price-chip active" data-val="all" onclick="setFilter('price','all',this)">All</button>
+    <button class="price-chip" data-val="free" onclick="setFilter('price','free',this)">Free</button>
+    <button class="price-chip" data-val="freemium" onclick="setFilter('price','freemium',this)">Freemium</button>
+    <button class="price-chip" data-val="paid" onclick="setFilter('price','paid',this)">Paid</button>
+  </div>
+</div>
+
+<button class="reset-btn" onclick="resetFilters()">↺ Clear all filters</button>
+```
+
+  </aside>
+
+  <div class="content">
+    <div class="content-hd">
+      <div class="result-info" id="resultInfo"></div>
+    </div>
+    <div class="tools-grid" id="toolsGrid"></div>
+  </div>
+</div>
+
+<footer>ToolHunt &copy; 2025 · All tools belong to their respective owners · <a href="#" style="color:var(--text3)">Submit a tool</a></footer>
+
+<script>
+const TOOLS = [
+  {id:1,name:"ChatGPT",icon:"🤖",tagline:"The world's most popular AI. Handles writing, coding, analysis, math, and almost anything else.",category:["writing","coding","chatbot","research"],roles:["writer","developer","student","marketer","entrepreneur","researcher","creator","hr"],price:"freemium",url:"https://chat.openai.com",tags:["OpenAI","GPT-4o","Versatile"]},
+  {id:2,name:"Claude",icon:"✦",tagline:"Anthropic's thoughtful AI. Exceptional for long documents, nuanced reasoning, and safe creative writing.",category:["writing","chatbot","research"],roles:["writer","student","entrepreneur","marketer","researcher","hr"],price:"freemium",url:"https://claude.ai",tags:["Anthropic","Long context","Reasoning"]},
+  {id:3,name:"Gemini",icon:"♊",tagline:"Google's multimodal AI with real-time search, Google Workspace integration, and image understanding.",category:["chatbot","research","writing"],roles:["student","researcher","writer","marketer","entrepreneur"],price:"freemium",url:"https://gemini.google.com",tags:["Google","Multimodal","Search"]},
+  {id:4,name:"Microsoft Copilot",icon:"🪟",tagline:"AI built into Windows and Office 365 — works inside Word, Excel, PowerPoint, and Teams.",category:["writing","productivity","chatbot"],roles:["writer","marketer","hr","entrepreneur"],price:"freemium",url:"https://copilot.microsoft.com",tags:["Microsoft","Office","Integrated"]},
+  {id:5,name:"Perplexity",icon:"🔍",tagline:"AI-powered search that gives cited, real-time answers. No more sifting through 10 blue links.",category:["research","chatbot"],roles:["student","writer","entrepreneur","researcher"],price:"freemium",url:"https://perplexity.ai",tags:["Search","Citations","Real-time"]},
+  {id:6,name:"Meta AI",icon:"🌐",tagline:"Free AI from Meta built into WhatsApp, Instagram, and Facebook. No sign-up needed.",category:["chatbot","writing"],roles:["creator","marketer","student"],price:"free",url:"https://meta.ai",tags:["Meta","Free","Social"]},
+  {id:7,name:"Grok",icon:"𝕏",tagline:"xAI's assistant with real-time access to X posts. Great for social trends and current events.",category:["chatbot","research"],roles:["marketer","researcher","creator"],price:"freemium",url:"https://grok.x.ai",tags:["xAI","Real-time","Twitter/X"]},
+  {id:8,name:"Jasper",icon:"✍️",tagline:"AI writing platform built for marketing teams — brand voice, campaigns, and content at scale.",category:["writing"],roles:["marketer","entrepreneur"],price:"paid",url:"https://jasper.ai",tags:["Marketing","Brand voice","Campaigns"]},
+  {id:9,name:"Copy.ai",icon:"📣",tagline:"Generate ads, social posts, email sequences, and product descriptions in seconds.",category:["writing"],roles:["marketer","entrepreneur"],price:"freemium",url:"https://copy.ai",tags:["Copywriting","Ads","Social"]},
+  {id:10,name:"Grammarly",icon:"✅",tagline:"Real-time grammar, tone, and clarity checker. Works in Gmail, Docs, LinkedIn, and everywhere else.",category:["writing"],roles:["writer","student","marketer","hr"],price:"freemium",url:"https://grammarly.com",tags:["Grammar","Editing","Tone"]},
+  {id:11,name:"Notion AI",icon:"📝",tagline:"AI writing and summarization inside Notion. Summarize pages, generate tasks, and write faster.",category:["writing","productivity"],roles:["writer","student","entrepreneur","marketer"],price:"freemium",url:"https://notion.so/product/ai",tags:["Productivity","Notes","Summarize"]},
+  {id:12,name:"Sudowrite",icon:"🖊️",tagline:"AI co-writer built for fiction. Helps writers develop plot, prose, characters, and overcome blocks.",category:["writing"],roles:["writer","creator"],price:"paid",url:"https://sudowrite.com",tags:["Fiction","Creative","Storytelling"]},
+  {id:13,name:"Wordtune",icon:"🔄",tagline:"Rewrite and rephrase sentences while keeping your unique voice. Great for non-native speakers.",category:["writing"],roles:["writer","student"],price:"freemium",url:"https://wordtune.com",tags:["Rewrite","Rephrase","Clarity"]},
+  {id:14,name:"Midjourney",icon:"🎨",tagline:"The gold standard for AI art. Creates stunning photorealistic and artistic images from text prompts.",category:["image"],roles:["designer","marketer","entrepreneur","creator"],price:"paid",url:"https://midjourney.com",tags:["Art","Photorealistic","Discord"]},
+  {id:15,name:"DALL-E 3",icon:"🖼️",tagline:"OpenAI's image generator, integrated into ChatGPT. Easy to use and remarkably accurate.",category:["image"],roles:["designer","marketer","writer","creator"],price:"freemium",url:"https://openai.com/dall-e-3",tags:["OpenAI","Accurate","Integrated"]},
+  {id:16,name:"Stable Diffusion",icon:"🌊",tagline:"Open-source image generation. Run locally for free, infinitely customizable with community models.",category:["image"],roles:["designer","developer"],price:"free",url:"https://stability.ai",tags:["Open source","Local","Custom"]},
+  {id:17,name:"Adobe Firefly",icon:"🔥",tagline:"Adobe's AI image generator — deeply integrated with Photoshop and Illustrator. Commercially safe.",category:["image","design"],roles:["designer","marketer","creator"],price:"freemium",url:"https://firefly.adobe.com",tags:["Adobe","Photoshop","Commercial safe"]},
+  {id:18,name:"Leonardo AI",icon:"🦁",tagline:"Fine-tuned AI image models for game assets, concept art, and consistent character design.",category:["image","design"],roles:["designer","developer","creator"],price:"freemium",url:"https://leonardo.ai",tags:["Game art","Characters","Fine-tune"]},
+  {id:19,name:"Ideogram",icon:"💡",tagline:"Best AI tool for text inside images — logos, posters, and typography that actually look correct.",category:["image","design"],roles:["designer","marketer","entrepreneur"],price:"freemium",url:"https://ideogram.ai",tags:["Text in image","Logo","Typography"]},
+  {id:20,name:"Runway",icon:"🎬",tagline:"Professional AI video generation. Gen-3 Alpha creates cinematic video from text or image inputs.",category:["video"],roles:["designer","marketer","creator"],price:"freemium",url:"https://runwayml.com",tags:["Gen-3","Cinematic","Creative"]},
+  {id:21,name:"Pika",icon:"⚡",tagline:"Turn images and prompts into short animated videos instantly. Perfect for social media.",category:["video"],roles:["marketer","designer","creator"],price:"freemium",url:"https://pika.art",tags:["Animation","Social","Fast"]},
+  {id:22,name:"Descript",icon:"🎞️",tagline:"Edit video by editing a text transcript. Remove filler words, overdub voice, and publish.",category:["video","audio"],roles:["marketer","entrepreneur","creator","writer"],price:"freemium",url:"https://descript.com",tags:["Podcast","Transcript","Overdub"]},
+  {id:23,name:"HeyGen",icon:"👤",tagline:"Create AI avatar spokesperson videos from text. Supports 40+ languages. No camera needed.",category:["video"],roles:["marketer","entrepreneur","creator"],price:"freemium",url:"https://heygen.com",tags:["Avatar","Spokesperson","Multilingual"]},
+  {id:24,name:"Sora",icon:"🌀",tagline:"OpenAI's breakthrough text-to-video model that creates strikingly realistic and imaginative scenes.",category:["video"],roles:["creator","designer","marketer"],price:"paid",url:"https://sora.com",tags:["OpenAI","Text-to-video","Cinematic"]},
+  {id:25,name:"ElevenLabs",icon:"🎙️",tagline:"Ultra-realistic AI voice cloning and text-to-speech in 30+ languages. Best voice quality available.",category:["audio"],roles:["marketer","entrepreneur","creator","writer"],price:"freemium",url:"https://elevenlabs.io",tags:["Voice cloning","TTS","Multilingual"]},
+  {id:26,name:"Suno",icon:"🎵",tagline:"Create full songs — lyrics, melody, vocals — from a simple text description in seconds.",category:["audio"],roles:["creator","marketer"],price:"freemium",url:"https://suno.ai",tags:["Music gen","Lyrics","Vocals"]},
+  {id:27,name:"Adobe Podcast",icon:"🎚️",tagline:"AI removes background noise and enhances voice quality in any recording. Free and instant.",category:["audio"],roles:["creator","marketer","entrepreneur"],price:"free",url:"https://podcast.adobe.com",tags:["Noise removal","Voice enhance","Free"]},
+  {id:28,name:"GitHub Copilot",icon:"💻",tagline:"The original AI pair programmer. Autocompletes code, explains bugs, and writes tests in your editor.",category:["coding"],roles:["developer"],price:"freemium",url:"https://github.com/features/copilot",tags:["Coding","VS Code","Autocomplete"]},
+  {id:29,name:"Cursor",icon:"⚡",tagline:"AI-first code editor that understands your entire codebase. Chat with your code in plain English.",category:["coding"],roles:["developer","entrepreneur"],price:"freemium",url:"https://cursor.sh",tags:["Code editor","Codebase AI","Chat"]},
+  {id:30,name:"Replit AI",icon:"🔧",tagline:"Build, run, and deploy full apps in the browser with AI assistance. Zero setup required.",category:["coding"],roles:["developer","student","entrepreneur"],price:"freemium",url:"https://replit.com",tags:["No-setup","Cloud IDE","Deploy"]},
+  {id:31,name:"v0 by Vercel",icon:"▲",tagline:"Describe a UI in words and get production-ready React + Tailwind code back instantly.",category:["coding","design"],roles:["developer","designer","entrepreneur"],price:"freemium",url:"https://v0.dev",tags:["UI gen","React","Tailwind"]},
+  {id:32,name:"Tabnine",icon:"🧠",tagline:"Privacy-focused AI code completion that works on-device. Supports 80+ programming languages.",category:["coding"],roles:["developer"],price:"freemium",url:"https://tabnine.com",tags:["Privacy","80+ langs","On-device"]},
+  {id:33,name:"Zapier AI",icon:"⚙️",tagline:"Automate workflows between 7,000+ apps using natural language commands. Zero code needed.",category:["automation","productivity"],roles:["entrepreneur","marketer","hr"],price:"freemium",url:"https://zapier.com/ai",tags:["Automation","No-code","7000+ apps"]},
+  {id:34,name:"Make",icon:"🔗",tagline:"Visual workflow builder for complex multi-step automations. More powerful than Zapier for pros.",category:["automation"],roles:["entrepreneur","developer","marketer"],price:"freemium",url:"https://make.com",tags:["Automation","Visual","Workflows"]},
+  {id:35,name:"Otter.ai",icon:"📋",tagline:"Real-time AI transcription for meetings. Auto-generates notes, summaries, and action items.",category:["productivity","audio"],roles:["entrepreneur","marketer","student","hr"],price:"freemium",url:"https://otter.ai",tags:["Meetings","Transcription","Action items"]},
+  {id:36,name:"Gamma",icon:"📊",tagline:"Create polished presentations, docs, and web pages from a prompt in under 2 minutes.",category:["productivity","design"],roles:["student","marketer","entrepreneur","hr"],price:"freemium",url:"https://gamma.app",tags:["Slides","Decks","Fast"]},
+  {id:37,name:"Fireflies.ai",icon:"🔥",tagline:"Records, transcribes, and summarizes every meeting. Integrates with Zoom, Meet, and Teams.",category:["productivity","audio"],roles:["entrepreneur","hr","marketer"],price:"freemium",url:"https://fireflies.ai",tags:["Meetings","Recording","Summary"]},
+  {id:38,name:"Canva AI",icon:"🖌️",tagline:"AI-powered design for everyone. Magic Design, background removal, and AI image generation built in.",category:["design","image"],roles:["marketer","creator","entrepreneur","student"],price:"freemium",url:"https://canva.com",tags:["Design","Templates","Easy"]},
+  {id:39,name:"Framer AI",icon:"🌐",tagline:"Build a fully designed responsive website from a single text prompt. Deploy in one click.",category:["design","coding"],roles:["designer","entrepreneur"],price:"freemium",url:"https://framer.com",tags:["Website","No-code","Beautiful"]},
+  {id:40,name:"Consensus",icon:"🔬",tagline:"AI that searches and summarizes peer-reviewed scientific papers. Backed by 200M+ studies.",category:["research","education"],roles:["researcher","student","writer"],price:"freemium",url:"https://consensus.app",tags:["Academic","Science","Citations"]},
+  {id:41,name:"Julius AI",icon:"📈",tagline:"Upload any spreadsheet and ask questions in plain English. Get instant charts and data insights.",category:["data","research"],roles:["researcher","entrepreneur","marketer"],price:"freemium",url:"https://julius.ai",tags:["Data analysis","CSV","Charts"]},
+  {id:42,name:"Khanmigo",icon:"🎓",tagline:"Khan Academy's AI tutor that guides students with hints — never just giving away the answer.",category:["education"],roles:["student"],price:"freemium",url:"https://khanacademy.org/khan-labs",tags:["Tutoring","K-12","Socratic"]},
+  {id:43,name:"Photomath",icon:"➗",tagline:"Point your camera at any math problem. AI solves it step-by-step with full explanations.",category:["education"],roles:["student"],price:"freemium",url:"https://photomath.com",tags:["Math","Step-by-step","Camera"]},
+];
+
+const state = { role:'all', category:'all', price:'all' };
+
+function setFilter(type, val, btn) {
+  state[type] = val;
+  const grp = btn.closest(type === 'price' ? '.price-row' : '.filter-list');
+  grp.querySelectorAll(type === 'price' ? '.price-chip' : '.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTools();
+}
+
+function resetFilters() {
+  state.role = 'all'; state.category = 'all'; state.price = 'all';
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.filter-btn[data-val="all"]').forEach(b => {
+    b.closest('.filter-list').querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+  });
+  document.querySelectorAll('.price-chip[data-val="all"]').forEach(b => {
+    b.closest('.price-row').querySelectorAll('.price-chip').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+  });
+  renderTools();
+}
+
+function filterWith(overrides={}) {
+  const s = {...state,...overrides};
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  return TOOLS.filter(t => {
+    if (s.role !== 'all' && !t.roles.includes(s.role)) return false;
+    if (s.category !== 'all' && !t.category.includes(s.category)) return false;
+    if (s.price !== 'all' && t.price !== s.price) return false;
+    if (q && !t.name.toLowerCase().includes(q) && !t.tagline.toLowerCase().includes(q) && !t.tags.some(g => g.toLowerCase().includes(q))) return false;
+    return true;
+  });
+}
+
+function updateCounts() {
+  ['all','writer','developer','designer','student','marketer','entrepreneur','researcher','creator','hr'].forEach(r => {
+    const el = document.getElementById(`rc-${r}`);
+    if (el) el.textContent = filterWith({role:r}).length;
+  });
+  ['all','writing','image','coding','video','audio','productivity','research','chatbot','data','design','automation','education'].forEach(c => {
+    const el = document.getElementById(`cc-${c}`);
+    if (el) el.textContent = filterWith({category:c}).length;
+  });
+}
+
+function renderTools() {
+  const filtered = filterWith();
+  const grid = document.getElementById('toolsGrid');
+  document.getElementById('matchCount').textContent = filtered.length;
+  document.getElementById('resultInfo').innerHTML = `<b>${filtered.length}</b> tools match your filters`;
+  updateCounts();
+
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="empty"><div class="empty-icon">🔭</div><h3>No tools found</h3><p>Try adjusting your filters or search term</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((t, i) => `
+    <div class="tool-card" style="animation-delay:${Math.min(i*0.03,0.5)}s">
+      <div class="card-top">
+        <div class="tool-avatar">${t.icon}</div>
+        <div class="card-info">
+          <div class="tool-name">${t.name}</div>
+          <div class="tool-cat">${t.category[0]}</div>
+        </div>
+        <span class="price-badge ${t.price}">${t.price}</span>
+      </div>
+      <div class="tool-desc">${t.tagline}</div>
+      <div class="tool-tags">${t.tags.map(g=>`<span class="tag">${g}</span>`).join('')}</div>
+      <div class="card-actions">
+        <button class="btn-ai" onclick="explainTool(${t.id},this)">✦ Why it fits me</button>
+        <a class="btn-visit" href="${t.url}" target="_blank" rel="noopener">Visit ↗</a>
+      </div>
+      <div class="ai-panel" id="ap-${t.id}">
+        <div class="ai-panel-hd"><div class="ai-dot"></div>AI Analysis</div>
+        <div class="ai-body" id="ab-${t.id}"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function explainTool(id, btn) {
+  const tool = TOOLS.find(t => t.id === id);
+  const panel = document.getElementById(`ap-${id}`);
+  const body = document.getElementById(`ab-${id}`);
+
+  if (panel.classList.contains('show')) {
+    panel.classList.remove('show');
+    btn.textContent = '✦ Why it fits me';
+    return;
+  }
+
+  panel.classList.add('show');
+  btn.textContent = '✕ Close';
+  body.innerHTML = `<span class="dots"><span></span><span></span><span></span></span> Analyzing...`;
+
+  const roleLabel = state.role === 'all' ? 'a general user' : `a ${state.role}`;
+  const catLabel = state.category === 'all' ? 'general tasks' : state.category;
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        messages:[{role:"user",content:`You are a concise AI tool advisor. In 2-3 sentences, explain why "${tool.name}" is a great choice for ${roleLabel} working on ${catLabel} tasks. Mention one standout feature. Practical, specific, no fluff. Plain text only.`}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.map(c=>c.text||'').join('')||'';
+    body.textContent = text || fallback(tool, roleLabel);
+  } catch {
+    body.textContent = fallback(tool, roleLabel);
+  }
+}
+
+function fallback(tool, roleLabel) {
+  return `${tool.name} is a strong pick in the ${tool.category[0]} space — its ${tool.tags[0]} focus makes it particularly valuable for ${roleLabel}s looking to work faster and smarter.`;
+}
+
+renderTools();
+</script>
+
+</body>
+</html>
