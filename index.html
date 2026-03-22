@@ -264,7 +264,11 @@ footer a:hover { color: var(--accent); }
 
 <nav>
   <div class="logo">Best<span>AIFor</span></div>
-  <div class="nav-pill"><b id="matchCount">—</b> tools found</div>
+  <div style="display:flex;align-items:center;gap:1.2rem;">
+    <a href="blog.html" style="font-size:.8rem;color:var(--t3);text-decoration:none;">Blog</a>
+    <a href="about.html" style="font-size:.8rem;color:var(--t3);text-decoration:none;">About</a>
+    <div class="nav-pill"><b id="matchCount">—</b> tools found</div>
+  </div>
 </nav>
 
 <section class="hero">
@@ -366,10 +370,12 @@ footer a:hover { color: var(--accent); }
 
 <footer>
   BestAIFor &copy; 2025 · All tools belong to their respective owners ·
+  <a href="blog.html">Blog</a> ·
   <a href="about.html">About</a> ·
   <a href="privacy.html">Privacy Policy</a> ·
-  <a href="contact.html">Contact</a> ·
-  <a href="#" style="color:var(--text3)">Submit a tool</a>
+  <a href="privacy-ko.html">개인정보처리방침</a> ·
+  <a href="terms.html">Terms of Service</a> ·
+  <a href="contact.html">Contact</a>
 </footer>
 
 <!-- DETAIL MODAL -->
@@ -535,6 +541,8 @@ function filterWith(overrides={}) {
   });
 }
 
+const SLUGS = {1: "chatgpt", 2: "claude", 3: "gemini", 4: "microsoft-copilot", 5: "perplexity", 14: "midjourney", 10: "grammarly", 28: "github-copilot", 11: "notion-ai", 25: "elevenlabs", 38: "canva-ai", 20: "runway", 29: "cursor", 8: "jasper", 17: "adobe-firefly", 23: "heygen", 33: "zapier-ai", 66: "harvey-ai", 70: "nabla-copilot", 90: "surfer-seo"};
+
 function updateCounts() {
   ['all','writer','developer','designer','student','marketer','entrepreneur','researcher','creator','hr','lawyer','doctor','finance','engineer'].forEach(r => {
     const el = document.getElementById(`rc-${r}`);
@@ -578,7 +586,7 @@ function renderTools() {
       <div class="card-actions">
         <button class="btn-ai" onclick="explainTool(${t.id},this)">✦ Why it fits me</button>
         <button class="btn-ai" style="background:var(--surface2);border-color:var(--border2);color:var(--text2)" onclick="openModal(${t.id})">📖 Full Review</button>
-        <a class="btn-visit" href="${t.url}" target="_blank" rel="noopener">Visit ↗</a>
+        ${SLUGS[t.id] ? `<a class="btn-visit" style="background:rgba(110,231,183,0.08);border-color:rgba(110,231,183,0.2);color:var(--accent)" href="tools/${SLUGS[t.id]}.html">Deep Dive ↗</a>` : `<a class="btn-visit" href="${t.url}" target="_blank" rel="noopener">Visit ↗</a>`}
       </div>
       <div class="ai-panel" id="ap-${t.id}">
         <div class="ai-panel-hd"><div class="ai-dot"></div>AI Analysis</div>
