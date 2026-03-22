@@ -259,7 +259,6 @@ footer a:hover { color: var(--accent); }
 ```
 
   </style>
-  <script src="reviews.js"></script>
 </head>
 <body>
 
@@ -639,7 +638,10 @@ function openModal(id) {
   overlay.classList.add('show');
   document.body.style.overflow = 'hidden';
 
-  const header = `
+  const diffLabel = tool.diff===1?'Beginner':tool.diff===2?'Intermediate':'Expert';
+  const reviewHtml = getReview(id);
+
+  content.innerHTML = `
     <div class="modal-header">
       <div class="modal-icon">${tool.icon}</div>
       <div>
@@ -649,15 +651,12 @@ function openModal(id) {
           <span class="tag">${tool.category[0]}</span>
           <span class="diff-bar diff-${tool.diff}" style="display:inline-flex;gap:4px;align-items:center">
             <div class="diff-dots"><span></span><span></span><span></span></div>
-            <span class="diff-text">${tool.diff===1?'Beginner':tool.diff===2?'Intermediate':'Expert'}</span>
+            <span class="diff-text">${diffLabel}</span>
           </span>
         </div>
       </div>
-    </div>`;
-
-  const reviewHtml = getReview(id, tool);
-
-  content.innerHTML = header + reviewHtml + `
+    </div>
+    ${reviewHtml}
     <div class="modal-cta">
       <a class="modal-btn-visit" href="${tool.url}" target="_blank" rel="noopener sponsored">Visit ${tool.name} ↗</a>
       <button class="modal-btn-close" onclick="closeModal()">Close</button>
@@ -675,6 +674,8 @@ function closeModalOnBg(e) {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
+
+<script src="reviews.js"></script>
 
 </body>
 </html>
