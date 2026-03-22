@@ -259,6 +259,7 @@ footer a:hover { color: var(--accent); }
 ```
 
   </style>
+  <script src="reviews.js"></script>
 </head>
 <body>
 
@@ -637,7 +638,8 @@ function openModal(id) {
   const content = document.getElementById('modalContent');
   overlay.classList.add('show');
   document.body.style.overflow = 'hidden';
-  content.innerHTML = `
+
+  const header = `
     <div class="modal-header">
       <div class="modal-icon">${tool.icon}</div>
       <div>
@@ -651,62 +653,15 @@ function openModal(id) {
           </span>
         </div>
       </div>
-    </div>
-    <div class="modal-loading">
-      <div class="dots" style="justify-content:center"><span></span><span></span><span></span></div>
-      <p>Generating full review for ${tool.name}...</p>
-    </div>
-  `;
-  generateReview(tool);
-}
+    </div>`;
 
-async function generateReview(tool) {
-  const content = document.getElementById('modalContent');
-  const diffLabel = tool.diff===1?'Beginner':tool.diff===2?'Intermediate':'Expert';
-  const prompt = `You are an expert AI tool reviewer. Write a comprehensive review of "${tool.name}" (${tool.tagline}) for the BestAIFor directory.
-Tool info: categories: ${tool.category.join(', ')}, roles: ${tool.roles.join(', ')}, pricing: ${tool.price}, level: ${diffLabel}, tags: ${tool.tags.join(', ')}, url: ${tool.url}
+  const reviewHtml = getReview(id, tool);
 
-Write using these EXACT HTML sections. Return ONLY HTML, no markdown, no backticks:
-
-<div class="modal-section"><h3>What is ${tool.name}?</h3><p>[2-3 paragraphs, 200+ words. What it is, who built it, core purpose, why it stands out.]</p></div>
-
-<div class="modal-section"><h3>Key Features</h3><ul><li><strong>[Feature 1]:</strong> [25-word explanation]</li><li><strong>[Feature 2]:</strong> [25-word explanation]</li><li><strong>[Feature 3]:</strong> [25-word explanation]</li><li><strong>[Feature 4]:</strong> [25-word explanation]</li><li><strong>[Feature 5]:</strong> [25-word explanation]</li></ul></div>
-
-<div class="pros-cons"><div class="pros-box"><h4>Pros</h4><ul><li>[Pro 1]</li><li>[Pro 2]</li><li>[Pro 3]</li><li>[Pro 4]</li></ul></div><div class="cons-box"><h4>Cons</h4><ul><li>[Con 1]</li><li>[Con 2]</li><li>[Con 3]</li></ul></div></div>
-
-<div class="modal-section"><h3>Pricing</h3><table class="price-table"><tr><th>Plan</th><th>Price</th><th>Includes</th></tr>[2-4 realistic pricing rows]</table></div>
-
-<div class="modal-section"><h3>Who Should Use ${tool.name}?</h3><p>[150+ words. Specific roles, use cases, who benefits most, who should look elsewhere.]</p></div>
-
-<div class="modal-section"><h3>How to Get Started</h3><ul><li>[Step 1]</li><li>[Step 2]</li><li>[Step 3]</li><li>[Step 4]</li></ul></div>`;
-
-  try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1500,
-        messages: [{ role: "user", content: prompt }]
-      })
-    });
-    const data = await res.json();
-    const html = data.content?.map(c => c.text || '').join('') || '';
-    const header = content.querySelector('.modal-header').outerHTML;
-    content.innerHTML = header + html + `
-      <div class="modal-cta">
-        <a class="modal-btn-visit" href="${tool.url}" target="_blank" rel="noopener sponsored">Visit ${tool.name} ↗</a>
-        <button class="modal-btn-close" onclick="closeModal()">Close</button>
-      </div>`;
-  } catch {
-    const header = content.querySelector('.modal-header').outerHTML;
-    content.innerHTML = header + `
-      <div class="modal-section"><h3>About ${tool.name}</h3><p>${tool.tagline}</p></div>
-      <div class="modal-cta">
-        <a class="modal-btn-visit" href="${tool.url}" target="_blank" rel="noopener">Visit ${tool.name} ↗</a>
-        <button class="modal-btn-close" onclick="closeModal()">Close</button>
-      </div>`;
-  }
+  content.innerHTML = header + reviewHtml + `
+    <div class="modal-cta">
+      <a class="modal-btn-visit" href="${tool.url}" target="_blank" rel="noopener sponsored">Visit ${tool.name} ↗</a>
+      <button class="modal-btn-close" onclick="closeModal()">Close</button>
+    </div>`;
 }
 
 function closeModal() {
