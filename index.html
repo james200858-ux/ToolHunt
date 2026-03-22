@@ -180,14 +180,14 @@ footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center;
   <p>Tell us who you are and what you need — we'll show you the best AI tools for your exact situation, with AI-powered explanations.</p>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
-    <input class="search-input" id="searchInput" type="text" placeholder="Search 65+ AI tools..." oninput="renderTools()"/>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search 77+ AI tools..." oninput="renderTools()"/>
   </div>
 </section>
 
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num"><b>65</b>+</div><div class="stat-label">Tools Listed</div></div>
-  <div class="stat"><div class="stat-num"><b>13</b></div><div class="stat-label">Categories</div></div>
-  <div class="stat"><div class="stat-num"><b>10</b></div><div class="stat-label">Roles</div></div>
+  <div class="stat"><div class="stat-num"><b>77</b>+</div><div class="stat-label">Tools Listed</div></div>
+  <div class="stat"><div class="stat-num"><b>16</b></div><div class="stat-label">Categories</div></div>
+  <div class="stat"><div class="stat-num"><b>14</b></div><div class="stat-label">Roles</div></div>
   <div class="stat"><div class="stat-num" style="color:var(--accent)">AI</div><div class="stat-label">Powered</div></div>
 </div>
 
@@ -208,6 +208,10 @@ footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center;
     <button class="filter-btn" data-val="researcher" onclick="setFilter('role','researcher',this)">🔬 Researcher <span class="cnt" id="rc-researcher"></span></button>
     <button class="filter-btn" data-val="creator" onclick="setFilter('role','creator',this)">🎬 Creator <span class="cnt" id="rc-creator"></span></button>
     <button class="filter-btn" data-val="hr" onclick="setFilter('role','hr',this)">🤝 HR / Manager <span class="cnt" id="rc-hr"></span></button>
+    <button class="filter-btn" data-val="lawyer" onclick="setFilter('role','lawyer',this)">⚖️ Lawyer <span class="cnt" id="rc-lawyer"></span></button>
+    <button class="filter-btn" data-val="doctor" onclick="setFilter('role','doctor',this)">🏥 Doctor / Medical <span class="cnt" id="rc-doctor"></span></button>
+    <button class="filter-btn" data-val="finance" onclick="setFilter('role','finance',this)">💰 Finance / Analyst <span class="cnt" id="rc-finance"></span></button>
+    <button class="filter-btn" data-val="engineer" onclick="setFilter('role','engineer',this)">⚙️ Engineer <span class="cnt" id="rc-engineer"></span></button>
   </div>
 </div>
 
@@ -227,6 +231,9 @@ footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center;
     <button class="filter-btn" data-val="design" onclick="setFilter('category','design',this)">✨ Design <span class="cnt" id="cc-design"></span></button>
     <button class="filter-btn" data-val="automation" onclick="setFilter('category','automation',this)">🔧 Automation <span class="cnt" id="cc-automation"></span></button>
     <button class="filter-btn" data-val="education" onclick="setFilter('category','education',this)">📚 Education <span class="cnt" id="cc-education"></span></button>
+    <button class="filter-btn" data-val="legal" onclick="setFilter('category','legal',this)">⚖️ Legal <span class="cnt" id="cc-legal"></span></button>
+    <button class="filter-btn" data-val="medical" onclick="setFilter('category','medical',this)">🏥 Medical <span class="cnt" id="cc-medical"></span></button>
+    <button class="filter-btn" data-val="finance" onclick="setFilter('category','finance',this)">💰 Finance <span class="cnt" id="cc-finance"></span></button>
   </div>
 </div>
 
@@ -322,6 +329,26 @@ const TOOLS = [
   {id:63,name:"DeepL",icon:"🌍",tagline:"The world's most accurate AI translator. Handles nuance and tone far better than Google Translate.",category:["writing"],roles:["writer","marketer","researcher","student"],price:"freemium",url:"https://deepl.com",tags:["Translation","Accurate","Multilingual"]},
   {id:64,name:"Napkin AI",icon:"🗒️",tagline:"Paste any text and instantly get beautiful diagrams, charts, and visuals. Zero design skills needed.",category:["design","productivity"],roles:["marketer","entrepreneur","student","hr"],price:"freemium",url:"https://napkin.ai",tags:["Diagrams","Visual","No-design"]},
   {id:65,name:"Luma Dream Machine",icon:"💎",tagline:"Generate stunning photorealistic 3D scenes and cinematic videos from text or image inputs.",category:["video","image"],roles:["designer","creator","marketer"],price:"freemium",url:"https://lumalabs.ai/dream-machine",tags:["3D","Photorealistic","Cinematic"]},
+
+  // ── LEGAL ──
+  {id:66,name:"Harvey AI",icon:"⚖️",tagline:"The most powerful AI platform built specifically for law firms. Used by 100,000+ lawyers at top global firms.",category:["legal"],roles:["lawyer","researcher"],price:"paid",url:"https://harvey.ai",tags:["Legal research","Contracts","BigLaw"]},
+  {id:67,name:"CoCounsel",icon:"📜",tagline:"Thomson Reuters' legal AI for research, document analysis, and drafting. Built on Westlaw and Practical Law.",category:["legal","research"],roles:["lawyer","researcher"],price:"paid",url:"https://casetext.com/cocounsel",tags:["Westlaw","Legal drafting","Litigation"]},
+  {id:68,name:"Spellbook",icon:"📋",tagline:"AI contract drafting and review tool that works directly inside Microsoft Word. Built for transactional lawyers.",category:["legal"],roles:["lawyer"],price:"freemium",url:"https://spellbook.legal",tags:["Contracts","Word","Redlining"]},
+  {id:69,name:"Clio",icon:"🏛️",tagline:"All-in-one legal practice management platform with AI for billing, case management, and client intake.",category:["legal","productivity"],roles:["lawyer"],price:"paid",url:"https://clio.com",tags:["Practice management","Billing","Law firm"]},
+
+  // ── MEDICAL ──
+  {id:70,name:"Nabla Copilot",icon:"🩺",tagline:"AI medical scribe that listens to doctor-patient conversations and auto-generates clinical notes in real time.",category:["medical"],roles:["doctor"],price:"freemium",url:"https://nabla.com",tags:["Clinical notes","Scribe","HIPAA"]},
+  {id:71,name:"Suki AI",icon:"💊",tagline:"Voice AI assistant for doctors that writes clinical documentation, orders, and referrals hands-free.",category:["medical"],roles:["doctor"],price:"paid",url:"https://suki.ai",tags:["Voice AI","EHR","Documentation"]},
+  {id:72,name:"Glass Health",icon:"🔬",tagline:"AI clinical decision support tool that helps physicians generate differential diagnoses and care plans.",category:["medical","research"],roles:["doctor","researcher"],price:"freemium",url:"https://glass.health",tags:["Diagnosis","Clinical","Decision support"]},
+
+  // ── FINANCE ──
+  {id:73,name:"Bloomberg GPT",icon:"📈",tagline:"Finance-specific AI trained on decades of Bloomberg data for market analysis, news, and financial research.",category:["finance","research"],roles:["finance","researcher","entrepreneur"],price:"paid",url:"https://bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-purpose-built-finance",tags:["Markets","Finance","Bloomberg"]},
+  {id:74,name:"Kensho",icon:"💹",tagline:"S&P Global's AI for financial analytics, market intelligence, and automated research reports.",category:["finance","data"],roles:["finance","researcher"],price:"paid",url:"https://kensho.com",tags:["S&P Global","Analytics","Markets"]},
+  {id:75,name:"Domo AI",icon:"📊",tagline:"AI-powered business intelligence platform that turns raw data into executive dashboards and insights.",category:["finance","data"],roles:["finance","entrepreneur","marketer"],price:"paid",url:"https://domo.com",tags:["BI","Dashboard","Data viz"]},
+
+  // ── ENGINEERING ──
+  {id:76,name:"Mathpix",icon:"🔢",tagline:"AI that converts handwritten math, chemistry, and scientific notation into editable digital formats instantly.",category:["education","research"],roles:["engineer","student","researcher"],price:"freemium",url:"https://mathpix.com",tags:["Math","Science","LaTeX"]},
+  {id:77,name:"Ansys SimAI",icon:"⚙️",tagline:"AI-powered simulation tool for engineers to predict product performance without running full simulations.",category:["research"],roles:["engineer"],price:"paid",url:"https://ansys.com/products/simulate/ansys-simai",tags:["Simulation","Engineering","CAD"]},
 ];
 
 const state = { role:'all', category:'all', price:'all' };
@@ -361,11 +388,11 @@ function filterWith(overrides={}) {
 }
 
 function updateCounts() {
-  ['all','writer','developer','designer','student','marketer','entrepreneur','researcher','creator','hr'].forEach(r => {
+  ['all','writer','developer','designer','student','marketer','entrepreneur','researcher','creator','hr','lawyer','doctor','finance','engineer'].forEach(r => {
     const el = document.getElementById(`rc-${r}`);
     if (el) el.textContent = filterWith({role:r}).length;
   });
-  ['all','writing','image','coding','video','audio','productivity','research','chatbot','data','design','automation','education'].forEach(c => {
+  ['all','writing','image','coding','video','audio','productivity','research','chatbot','data','design','automation','education','legal','medical','finance'].forEach(c => {
     const el = document.getElementById(`cc-${c}`);
     if (el) el.textContent = filterWith({category:c}).length;
   });
