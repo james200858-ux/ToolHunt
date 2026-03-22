@@ -180,12 +180,12 @@ footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center;
   <p>Tell us who you are and what you need — we'll show you the best AI tools for your exact situation, with AI-powered explanations.</p>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
-    <input class="search-input" id="searchInput" type="text" placeholder="Search 40+ AI tools..." oninput="renderTools()"/>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search 60+ AI tools..." oninput="renderTools()"/>
   </div>
 </section>
 
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num"><b>43</b>+</div><div class="stat-label">Tools Listed</div></div>
+  <div class="stat"><div class="stat-num"><b>63</b>+</div><div class="stat-label">Tools Listed</div></div>
   <div class="stat"><div class="stat-num"><b>13</b></div><div class="stat-label">Categories</div></div>
   <div class="stat"><div class="stat-num"><b>10</b></div><div class="stat-label">Roles</div></div>
   <div class="stat"><div class="stat-num" style="color:var(--accent)">AI</div><div class="stat-label">Powered</div></div>
@@ -300,6 +300,26 @@ const TOOLS = [
   {id:41,name:"Julius AI",icon:"📈",tagline:"Upload any spreadsheet and ask questions in plain English. Get instant charts and data insights.",category:["data","research"],roles:["researcher","entrepreneur","marketer"],price:"freemium",url:"https://julius.ai",tags:["Data analysis","CSV","Charts"]},
   {id:42,name:"Khanmigo",icon:"🎓",tagline:"Khan Academy's AI tutor that guides students with hints — never just giving away the answer.",category:["education"],roles:["student"],price:"freemium",url:"https://khanacademy.org/khan-labs",tags:["Tutoring","K-12","Socratic"]},
   {id:43,name:"Photomath",icon:"➗",tagline:"Point your camera at any math problem. AI solves it step-by-step with full explanations.",category:["education"],roles:["student"],price:"freemium",url:"https://photomath.com",tags:["Math","Step-by-step","Camera"]},
+  {id:44,name:"Rytr",icon:"🖋️",tagline:"Affordable AI writing assistant for blogs, emails, and social content. 40+ use cases in one tool.",category:["writing"],roles:["writer","marketer","entrepreneur"],price:"freemium",url:"https://rytr.me",tags:["Blog","Email","Affordable"]},
+  {id:45,name:"Quillbot",icon:"🪶",tagline:"AI paraphrasing and summarization tool trusted by millions of students and researchers.",category:["writing","research"],roles:["student","writer","researcher"],price:"freemium",url:"https://quillbot.com",tags:["Paraphrase","Summarize","Students"]},
+  {id:46,name:"Writesonic",icon:"⚡",tagline:"AI platform for SEO-optimized articles, landing pages, and marketing copy at scale.",category:["writing"],roles:["marketer","entrepreneur","writer"],price:"freemium",url:"https://writesonic.com",tags:["SEO","Landing page","Scale"]},
+  {id:47,name:"Flux",icon:"🌈",tagline:"Next-generation open-source image model from Black Forest Labs. Rivals Midjourney in quality.",category:["image"],roles:["designer","developer","creator"],price:"freemium",url:"https://blackforestlabs.ai",tags:["Open source","High quality","Fast"]},
+  {id:48,name:"Kling AI",icon:"🎭",tagline:"Chinese AI video and image generator producing strikingly realistic results. Rapidly growing globally.",category:["image","video"],roles:["creator","designer","marketer"],price:"freemium",url:"https://klingai.com",tags:["Realistic","Video","Image"]},
+  {id:49,name:"Recraft",icon:"🎨",tagline:"AI design tool for creating consistent brand illustrations, icons, and vector graphics.",category:["image","design"],roles:["designer","marketer"],price:"freemium",url:"https://recraft.ai",tags:["Brand","Vector","Icons"]},
+  {id:50,name:"Synthesia",icon:"🎥",tagline:"Create professional AI training and explainer videos with avatars in 130+ languages.",category:["video"],roles:["marketer","hr","entrepreneur"],price:"paid",url:"https://synthesia.io",tags:["Training","Avatar","130 languages"]},
+  {id:51,name:"Invideo AI",icon:"📹",tagline:"Turn a text prompt into a full YouTube-ready video with voiceover, clips, and subtitles.",category:["video"],roles:["creator","marketer","entrepreneur"],price:"freemium",url:"https://invideo.io",tags:["YouTube","Voiceover","Subtitles"]},
+  {id:52,name:"Captions",icon:"💬",tagline:"Auto-generate animated captions for videos. Hugely popular for TikTok and Reels creators.",category:["video"],roles:["creator","marketer"],price:"freemium",url:"https://captions.ai",tags:["Captions","TikTok","Reels"]},
+  {id:53,name:"Windsurf",icon:"🏄",tagline:"Agentic AI IDE by Codeium that autonomously writes, runs, and debugs entire features for you.",category:["coding"],roles:["developer","entrepreneur"],price:"freemium",url:"https://codeium.com/windsurf",tags:["Agentic","IDE","Autonomous"]},
+  {id:54,name:"Bolt.new",icon:"🔩",tagline:"Prompt-to-fullstack app builder. Describe your app and get a deployable web app in minutes.",category:["coding"],roles:["developer","entrepreneur","designer"],price:"freemium",url:"https://bolt.new",tags:["Fullstack","No-code","Deploy"]},
+  {id:55,name:"Lovable",icon:"💜",tagline:"Build production-ready web apps by chatting. No coding skills needed — just describe what you want.",category:["coding","design"],roles:["entrepreneur","designer"],price:"freemium",url:"https://lovable.dev",tags:["No-code","Web app","Chat"]},
+  {id:56,name:"Reclaim AI",icon:"📅",tagline:"AI calendar assistant that auto-schedules tasks, habits, and meetings around your priorities.",category:["productivity"],roles:["entrepreneur","hr","marketer"],price:"freemium",url:"https://reclaim.ai",tags:["Calendar","Scheduling","Habits"]},
+  {id:57,name:"Motion",icon:"🌀",tagline:"AI project manager that automatically builds your daily schedule based on deadlines and priorities.",category:["productivity"],roles:["entrepreneur","hr","marketer"],price:"paid",url:"https://usemotion.com",tags:["Schedule","Tasks","Auto-plan"]},
+  {id:58,name:"Mem AI",icon:"🧠",tagline:"AI-powered note-taking that automatically connects related ideas and surfaces relevant memories.",category:["productivity","research"],roles:["writer","researcher","entrepreneur"],price:"freemium",url:"https://mem.ai",tags:["Notes","Connected","Memory"]},
+  {id:59,name:"Elicit",icon:"📖",tagline:"AI research assistant that finds and summarizes academic papers to answer your research questions.",category:["research","education"],roles:["researcher","student"],price:"freemium",url:"https://elicit.com",tags:["Academic","Papers","Research"]},
+  {id:60,name:"Rows AI",icon:"📊",tagline:"AI-native spreadsheet that writes formulas, analyzes data, and creates charts from plain English.",category:["data","productivity"],roles:["marketer","entrepreneur","researcher"],price:"freemium",url:"https://rows.com",tags:["Spreadsheet","Formulas","Charts"]},
+  {id:61,name:"Intercom Fin",icon:"🤝",tagline:"AI customer support agent that resolves up to 50% of support tickets instantly without human help.",category:["automation","productivity"],roles:["entrepreneur","marketer","hr"],price:"paid",url:"https://intercom.com/fin",tags:["Support","Chatbot","Automation"]},
+  {id:62,name:"Clay",icon:"🏺",tagline:"AI-powered sales prospecting that enriches leads and writes hyper-personalized outreach at scale.",category:["automation"],roles:["marketer","entrepreneur"],price:"freemium",url:"https://clay.com",tags:["Sales","Prospecting","Outreach"]},
+  {id:63,name:"Beautiful.ai",icon:"✨",tagline:"Smart presentation software where AI auto-designs slides as you add content. Always looks polished.",category:["design","productivity"],roles:["marketer","hr","entrepreneur","student"],price:"freemium",url:"https://beautiful.ai",tags:["Presentations","Auto-design","Polished"]},
 ];
 
 const state = { role:'all', category:'all', price:'all' };
