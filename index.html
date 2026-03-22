@@ -156,6 +156,85 @@ nav {
 
 /* FOOTER */
 footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.75rem; color: var(--text3); }
+footer a { color: var(--text3); text-decoration: none; margin: 0 6px; transition: color 0.15s; }
+footer a:hover { color: var(--accent); }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 500; backdrop-filter: blur(8px); overflow-y: auto; padding: 2rem 1rem; }
+.modal-overlay.show { display: flex; align-items: flex-start; justify-content: center; animation: fadeIn 0.2s ease; }
+.modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 20px; width: 100%; max-width: 740px; padding: 2.4rem; position: relative; animation: slideUp 0.3s ease; margin: auto; }
+.modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--surface2); border: 1px solid var(--border); color: var(--text2); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; font-family: inherit; }
+.modal-close:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.modal-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.6rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+.modal-icon { width: 58px; height: 58px; border-radius: 14px; background: var(--surface3); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1.9rem; flex-shrink: 0; }
+.modal-title { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
+.modal-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.modal-section { margin-bottom: 1.4rem; }
+.modal-section h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+.modal-section p { font-size: 0.87rem; color: var(--text2); line-height: 1.8; margin-bottom: 0.6rem; }
+.modal-section ul { padding-left: 1.1rem; }
+.modal-section ul li { font-size: 0.87rem; color: var(--text2); line-height: 1.7; margin-bottom: 0.3rem; }
+.modal-section strong { color: var(--text); font-weight: 600; }
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.4rem; }
+.pros-box { padding: 1rem 1.1rem; border-radius: 10px; background: rgba(110,231,183,0.06); border: 1px solid rgba(110,231,183,0.18); }
+.cons-box { padding: 1rem 1.1rem; border-radius: 10px; background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.18); }
+.pros-box h4 { color: #6ee7b7; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.cons-box h4 { color: #f87171; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.pros-box li, .cons-box li { font-size: 0.82rem; color: var(--text2); list-style: none; margin-bottom: 0.3rem; line-height: 1.5; }
+.pros-box li::before { content: "✓  "; color: #6ee7b7; font-weight: 700; }
+.cons-box li::before { content: "✗  "; color: #f87171; font-weight: 700; }
+.price-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 0.6rem; }
+.price-table th { text-align: left; padding: 7px 10px; background: var(--surface2); color: var(--text3); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+.price-table td { padding: 8px 10px; border-top: 1px solid var(--border); color: var(--text2); }
+.price-table tr:hover td { background: var(--surface2); }
+.modal-cta { display: flex; gap: 10px; margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+.modal-btn-visit { flex: 1; padding: 13px; border-radius: 10px; background: var(--accent); color: #000; font-family: inherit; font-size: 0.85rem; font-weight: 800; border: none; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: opacity 0.15s; letter-spacing: 0.02em; }
+.modal-btn-visit:hover { opacity: 0.85; }
+.modal-btn-close { padding: 13px 20px; border-radius: 10px; border: 1px solid var(--border2); background: var(--surface2); color: var(--text2); font-family: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+.modal-btn-close:hover { border-color: var(--text); color: var(--text); }
+.modal-loading { text-align: center; padding: 3rem 2rem; color: var(--text3); }
+.modal-loading p { margin-top: 12px; font-size: 0.85rem; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 600px) {
+  .modal { padding: 1.5rem; border-radius: 14px; }
+  .pros-cons { grid-template-columns: 1fr; }
+}
+footer a { color: var(--text3); text-decoration: none; margin: 0 8px; }
+footer a:hover { color: var(--accent); }
+
+/* DETAIL MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; backdrop-filter: blur(6px); }
+.modal-overlay.show { display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; animation: fadeIn 0.2s ease; }
+.modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 20px; width: 100%; max-width: 720px; padding: 2.5rem; position: relative; animation: slideUp 0.3s ease; margin: auto; }
+.modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--surface2); border: 1px solid var(--border2); color: var(--text2); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.modal-close:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.modal-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.modal-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--surface3); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; }
+.modal-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
+.modal-meta { display: flex; align-items: center; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+.modal-body { color: var(--text2); font-size: 0.88rem; line-height: 1.8; }
+.modal-body h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 1.4rem 0 0.5rem; letter-spacing: -0.01em; }
+.modal-body p { margin-bottom: 0.8rem; }
+.modal-body ul { padding-left: 1.2rem; margin-bottom: 0.8rem; }
+.modal-body ul li { margin-bottom: 0.3rem; }
+.modal-body strong { color: var(--text); font-weight: 600; }
+.modal-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+.pros-box, .cons-box { padding: 1rem; border-radius: 10px; font-size: 0.82rem; }
+.pros-box { background: rgba(110,231,183,0.06); border: 1px solid rgba(110,231,183,0.15); }
+.cons-box { background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.15); }
+.pros-box h4 { color: #6ee7b7; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.cons-box h4 { color: #f87171; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.pros-box li, .cons-box li { color: var(--text2); margin-bottom: 0.25rem; list-style: none; padding-left: 0; }
+.pros-box li::before { content: "✓ "; color: #6ee7b7; }
+.cons-box li::before { content: "✗ "; color: #f87171; }
+.modal-cta { display: flex; gap: 10px; margin-top: 1.8rem; }
+.modal-btn-primary { flex: 1; padding: 12px; border-radius: 10px; background: var(--accent); color: #000; font-family: inherit; font-size: 0.85rem; font-weight: 700; border: none; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: opacity 0.15s; }
+.modal-btn-primary:hover { opacity: 0.85; }
+.modal-btn-secondary { padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border2); background: var(--surface2); color: var(--text2); font-family: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+.modal-btn-secondary:hover { border-color: var(--text2); color: var(--text); }
+@keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 600px) {
+  .modal { padding: 1.5rem;
 
 /* ANIMATIONS */
 @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
@@ -285,7 +364,27 @@ footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center;
   </div>
 </div>
 
-<footer>BestAIFor &copy; 2025 · All tools belong to their respective owners · <a href="#" style="color:var(--text3)">Submit a tool</a></footer>
+<footer>
+  BestAIFor &copy; 2025 · All tools belong to their respective owners ·
+  <a href="about.html">About</a> ·
+  <a href="privacy.html">Privacy Policy</a> ·
+  <a href="contact.html">Contact</a> ·
+  <a href="#" style="color:var(--text3)">Submit a tool</a>
+</footer>
+
+<!-- DETAIL MODAL -->
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent">
+      <div class="modal-loading">
+        <div class="dots" style="justify-content:center;margin-bottom:12px"><span></span><span></span><span></span></div>
+        Loading detailed review...
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 const TOOLS = [
@@ -478,6 +577,7 @@ function renderTools() {
       </div>
       <div class="card-actions">
         <button class="btn-ai" onclick="explainTool(${t.id},this)">✦ Why it fits me</button>
+        <button class="btn-ai" style="background:var(--surface2);border-color:var(--border2);color:var(--text2)" onclick="openModal(${t.id})">📖 Full Review</button>
         <a class="btn-visit" href="${t.url}" target="_blank" rel="noopener">Visit ↗</a>
       </div>
       <div class="ai-panel" id="ap-${t.id}">
@@ -529,6 +629,96 @@ function fallback(tool, roleLabel) {
 }
 
 renderTools();
+
+// ── MODAL ──
+function openModal(id) {
+  const tool = TOOLS.find(t => t.id === id);
+  const overlay = document.getElementById('modalOverlay');
+  const content = document.getElementById('modalContent');
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  content.innerHTML = `
+    <div class="modal-header">
+      <div class="modal-icon">${tool.icon}</div>
+      <div>
+        <div class="modal-title">${tool.name}</div>
+        <div class="modal-meta">
+          <span class="price-badge ${tool.price}">${tool.price}</span>
+          <span class="tag">${tool.category[0]}</span>
+          <span class="diff-bar diff-${tool.diff}" style="display:inline-flex;gap:4px;align-items:center">
+            <div class="diff-dots"><span></span><span></span><span></span></div>
+            <span class="diff-text">${tool.diff===1?'Beginner':tool.diff===2?'Intermediate':'Expert'}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-loading">
+      <div class="dots" style="justify-content:center"><span></span><span></span><span></span></div>
+      <p>Generating full review for ${tool.name}...</p>
+    </div>
+  `;
+  generateReview(tool);
+}
+
+async function generateReview(tool) {
+  const content = document.getElementById('modalContent');
+  const diffLabel = tool.diff===1?'Beginner':tool.diff===2?'Intermediate':'Expert';
+  const prompt = `You are an expert AI tool reviewer. Write a comprehensive review of "${tool.name}" (${tool.tagline}) for the BestAIFor directory.
+Tool info: categories: ${tool.category.join(', ')}, roles: ${tool.roles.join(', ')}, pricing: ${tool.price}, level: ${diffLabel}, tags: ${tool.tags.join(', ')}, url: ${tool.url}
+
+Write using these EXACT HTML sections. Return ONLY HTML, no markdown, no backticks:
+
+<div class="modal-section"><h3>What is ${tool.name}?</h3><p>[2-3 paragraphs, 200+ words. What it is, who built it, core purpose, why it stands out.]</p></div>
+
+<div class="modal-section"><h3>Key Features</h3><ul><li><strong>[Feature 1]:</strong> [25-word explanation]</li><li><strong>[Feature 2]:</strong> [25-word explanation]</li><li><strong>[Feature 3]:</strong> [25-word explanation]</li><li><strong>[Feature 4]:</strong> [25-word explanation]</li><li><strong>[Feature 5]:</strong> [25-word explanation]</li></ul></div>
+
+<div class="pros-cons"><div class="pros-box"><h4>Pros</h4><ul><li>[Pro 1]</li><li>[Pro 2]</li><li>[Pro 3]</li><li>[Pro 4]</li></ul></div><div class="cons-box"><h4>Cons</h4><ul><li>[Con 1]</li><li>[Con 2]</li><li>[Con 3]</li></ul></div></div>
+
+<div class="modal-section"><h3>Pricing</h3><table class="price-table"><tr><th>Plan</th><th>Price</th><th>Includes</th></tr>[2-4 realistic pricing rows]</table></div>
+
+<div class="modal-section"><h3>Who Should Use ${tool.name}?</h3><p>[150+ words. Specific roles, use cases, who benefits most, who should look elsewhere.]</p></div>
+
+<div class="modal-section"><h3>How to Get Started</h3><ul><li>[Step 1]</li><li>[Step 2]</li><li>[Step 3]</li><li>[Step 4]</li></ul></div>`;
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1500,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const html = data.content?.map(c => c.text || '').join('') || '';
+    const header = content.querySelector('.modal-header').outerHTML;
+    content.innerHTML = header + html + `
+      <div class="modal-cta">
+        <a class="modal-btn-visit" href="${tool.url}" target="_blank" rel="noopener sponsored">Visit ${tool.name} ↗</a>
+        <button class="modal-btn-close" onclick="closeModal()">Close</button>
+      </div>`;
+  } catch {
+    const header = content.querySelector('.modal-header').outerHTML;
+    content.innerHTML = header + `
+      <div class="modal-section"><h3>About ${tool.name}</h3><p>${tool.tagline}</p></div>
+      <div class="modal-cta">
+        <a class="modal-btn-visit" href="${tool.url}" target="_blank" rel="noopener">Visit ${tool.name} ↗</a>
+        <button class="modal-btn-close" onclick="closeModal()">Close</button>
+      </div>`;
+  }
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 
 </body>
